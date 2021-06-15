@@ -8,6 +8,7 @@ class Injector {
   static final Injector _instance = Injector.internal();
 
   AccountRepository get accountRepository {
+    return AccountRepositoryImpl();
   }
 
   static Injector getInjector() {
