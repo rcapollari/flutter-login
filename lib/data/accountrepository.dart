@@ -24,4 +24,23 @@ class AccountRepositoryImpl extends AccountRepository {
 
   final String selectSql =
       'SELECT id from account_master WHERE id = ? ';
+
+  final String deleteSql =
+      'DELETE FROM account_master';
+
+  @override
+  Future<void> clear() async {
+    final DbProvider dbp = DbProvider();
+    final Database dbClient = await dbp.db;
+
+    await dbClient.rawUpdate('UPDATE account_master SET syncstate = null');
+  }
+
+  @override
+  Future<List<AccountMaster>> getAccount() async {
+    final DbProvider dbp = DbProvider();
+    final Database dbClient = await dbp.db;
+    final List<Map<dynamic, dynamic>> results =
+        await dbClient.rawQuery(selectAllSql);
+  }
 }

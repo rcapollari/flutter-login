@@ -11,13 +11,13 @@ class DbProvider {
       'CREATE UNIQUE INDEX idx_uuid_error_log ON error_log (uuid)';
 
   static const String CreateAccountMaster =
-      'CREATE TABLE account_master (formId INTEGER PRIMARY KEY NOT NULL UNIQUE, title TEXT NOT NULL, json TEXT NOT NULL, dateadded DATETIME NOT NULL, test BOOLEAN NOT NULL)';
+      'CREATE TABLE account_master (id INTEGER PRIMARY KEY NOT NULL UNIQUE, title TEXT NOT NULL, json TEXT NOT NULL, dateadded DATETIME NOT NULL, test BOOLEAN NOT NULL)';
 
   static const String CreateAccountMasterIdx =
       'CREATE INDEX idx_formId_account_master ON account_master(formId)';
 
   static const String CreateAccountData =
-      'CREATE TABLE survey_data (uuid STRING (36) PRIMARY KEY NOT NULL, physicaldeviceid STRING (16) NOT NULL, respondentId INTEGER, eventInstanceId INTEGER, formId INTEGER NOT NULL, title TEXT NOT NULL, data TEXT NOT NULL, datesaved DATETIME NOT NULL, syncstate CHAR (1))';
+      'CREATE TABLE account_data (uuid STRING (36) PRIMARY KEY NOT NULL, physicaldeviceid STRING (16) NOT NULL, respondentId INTEGER, eventInstanceId INTEGER, formId INTEGER NOT NULL, title TEXT NOT NULL, data TEXT NOT NULL, datesaved DATETIME NOT NULL, syncstate CHAR (1))';
 
   static const String CreateAccountDataIdx =
       'CREATE INDEX idx_uuid_account_data ON account_data (uuid);';
